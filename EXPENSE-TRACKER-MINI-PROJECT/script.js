@@ -30,6 +30,16 @@ const calculateTotalExpense=()=>{
     const total=expenses.reduce((sum,expense)=>sum+expense.amount,0);
     console.log(`Total expense: $${total}`);
 }
+//delete expenses by id function
+const deleteExpenseById=(id)=>{
+    const index=expenses.findIndex(expense=>expense.id===id);
+    if(index!==-1){
+        expenses.splice(index,1);
+        console.log(`Expense with ID ${id} deleted.`);
+    }else{
+        console.log(`Expense with ID ${id} not found.`);
+    }
+}
 
 //adding sample expense 
 addExpense(1,"Groceries",50);
@@ -40,3 +50,5 @@ addExpense(3,"Utilities",150);
 displayExpenses();
 findExpenseById(2);
 calculateTotalExpense();
+deleteExpenseById(2);
+displayExpenses();
